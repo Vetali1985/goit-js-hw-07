@@ -3,8 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 const imageCont = document.querySelector(`.gallery`)
 const imageMarkup = createGalleryItems(galleryItems)
-
-
 imageCont.insertAdjacentHTML(`beforeend`, imageMarkup)
 imageCont.addEventListener(`click`, onImgClick)
 
@@ -28,21 +26,29 @@ function createGalleryItems(galleryItems) {
         .join(" ");
 }
 
+
+
+
 function onImgClick(evt) {
-    blockStandartActio(evt)
+    evt.preventDefault();
 
     if (evt.target.nodeName !== "IMG") {
         return
     }
     const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
-`)
+`);
 
-    instance.show()
-    imageCont.addEventListener(`keydown`, evt => {
-        if (evt.code === "Escape")
-            instance.close()
-    })
+    instance.show();
+    
+    imageCont.addEventListener(`keydown`, (evt) => {
+        if (evt.code === "Escape") {
+         
+        }
+            instance.close();
+    
 }
+    )
+};
 
 
