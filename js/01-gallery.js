@@ -7,6 +7,7 @@ imageCont.insertAdjacentHTML(`beforeend`, imageMarkup)
 imageCont.addEventListener(`click`, onImgClick)
 
 
+
 function createGalleryItems(galleryItems) {
     return galleryItems
         .map(({ preview, original, description }) => {
@@ -45,10 +46,12 @@ function onImgClick(evt) {
         if (evt.code === "Escape") {
          
         }
+        
             instance.close();
-    
+    imageCont.removeEventListener(`click`, onImgClick)
 }
     )
+    
 };
 
 
